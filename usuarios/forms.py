@@ -74,3 +74,14 @@ class CadastroForms(forms.Form):
             }
         )
     )    
+    #esse nome padrao clean_nome_do_campo
+    def clean_nome_cadastro(self):
+        nome = self.cleaned_data.get("nome_cadastro")
+        
+        if nome:
+            nome = nome.strip() #limpa os caracteres do início e fim
+            if " " in nome:
+                raise forms.ValidationError('Espaços não são permitidos nesse campo')
+            else:
+                return nome
+            
