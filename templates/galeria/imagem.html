@@ -1,4 +1,4 @@
-{% extends 'galeria/base.html' %}
+{% extends 'shared/base.html' %}
 {% load static %}
 {% block content %}
 
@@ -19,6 +19,11 @@
                                 <p class="imagem__texto">{{fotografia.descricao}}</p>
                             </div>
                         </div>
+
+                        <div>
+                            <a href="{% url 'editar_imagem' fotografia.id %}"><button class="btn btn-success col-12" >Editar</button></a>
+                            <a href="{% url 'deletar_imagem' fotografia.id %}"><button class="btn btn-danger col-12" >Deletar</button></a>
+                        </div>    
                     </div>
                 </section>
             </section>
