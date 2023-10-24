@@ -30,10 +30,10 @@ def login(request):
             else:
                 messages.error(request,'Erro ao efetuar login')
                 return redirect('login')
-        else:
-            for field in login_form:
-                messages.error(request, f'{field.name}: {field.errors}')
-            return redirect('login')
+#        else:
+#            for field in login_form:
+#                messages.error(request, f'{field.name}: {field.errors}')
+#            return redirect('login')
                 
     #GET        
     return render(request, 'usuarios/login.html', {"form": login_form})
@@ -47,11 +47,6 @@ def cadastro(request):
         cadastro_form = CadastroForms(request.POST)
             
         if cadastro_form.is_valid():
-            
-            if ( cadastro_form['senha_1'].value() != cadastro_form['senha_2'].value() ):
-                
-                messages.error(request, 'Senhas devem ser iguais!')
-                return redirect('cadastro') #nome da rota
             
             nome = cadastro_form['nome_cadastro'].value()
             email = cadastro_form['email'].value()
@@ -72,12 +67,6 @@ def cadastro(request):
             messages.success(request,'Cadastro efetuado com sucesso!')
             
             return redirect('login')
-        else:
-            
-            for field in cadastro_form:
-                if field.errors:
-                    messages.error(request, field.errors)
-            return redirect('cadastro') #nome da rota
                 
     return render(request, 'usuarios/cadastro.html', {"form": cadastro_form})
 
