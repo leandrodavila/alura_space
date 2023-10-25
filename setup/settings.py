@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+        
         },
     },
 ]
@@ -144,3 +145,8 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'primary',
     
 }
+#aqui eu vou mudar o nome do cookie de segurança
+SESSION_COOKIE_NAME = 'lfdsessionid'
+
+#parametro de URL para garantir segurança
+URL_HASH_PARAM_NAME = 'lfd_hash_id'
